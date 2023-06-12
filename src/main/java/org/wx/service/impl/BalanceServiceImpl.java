@@ -14,16 +14,25 @@ import org.wx.vo.BalanceQueryVO;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
+ * 账户余额
  * Auto created by codeAppend plugin
  */
 @Service
 public class BalanceServiceImpl extends ServiceImpl<BalanceDao, Balance> implements BalanceService {
 
+    /**
+     * 2小时秒的常量
+     */
+    private static final Integer TWO_HOUR_SECOND = 2 * 3600;
+
     @Override
     public Page<Balance> listBalance(@RequestBody BalanceQueryDTO queryDTO) {
+        // 构建page对象
         Page<Balance> page = new Page<>(queryDTO.getCurrent(), queryDTO.getSize());
+        // 分页查询
         Page<Balance> list = baseMapper.listBalance(page,queryDTO);
         return list;
     }
