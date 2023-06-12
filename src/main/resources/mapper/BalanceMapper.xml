@@ -15,5 +15,32 @@
     <sql id="columns">
          `id`,`name`,`age`,`money`
 	</sql>
+	
+	<insert id="saveSingle">
+		insert into user_balance (`name`,`age`,`money`)
+		values (#{balanceSaveDTO.name},#{balanceSaveDTO.age},#{balanceSaveDTO.money});
+	</insert>
 
+	<update id="updateSingle">
+		update user_balance set  name  = #{updateDTO.name}, age = #{updateDTO.age} , money = #{updateDTO.money} where id = #{updateDTO.id}
+	</update>
+
+	<delete id="del">
+		delete from user_balance where  id = #{id}
+	</delete>
+
+	<select id="listBalance" resultType="org.wx.domain.Balance">
+		select
+			`id`,`name`,`age`,`money`
+		from
+			user_balance
+		<where>
+			<if test="queryDTO.name != null">
+				and name  = #{queryDTO.name}
+			</if>
+			<if test="queryDTO.age != null">
+				and age  = #{queryDTO.age}
+			</if>
+		</where>
+	</select>
 </mapper>

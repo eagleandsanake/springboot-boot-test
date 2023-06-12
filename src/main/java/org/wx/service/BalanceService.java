@@ -1,7 +1,11 @@
 package org.wx.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.wx.domain.Balance;
+import org.wx.dto.BalanceQueryDTO;
+import org.wx.dto.BalanceSaveDTO;
+import org.wx.dto.BalanceUpdateDTO;
 
 import java.util.List;
 
@@ -10,6 +14,11 @@ import java.util.List;
  */
 public interface BalanceService extends IService<Balance> {
 
-    List<Balance> listBalance();
+    Page<Balance> listBalance(BalanceQueryDTO balanceQueryDTO);
 
+    void saveSingle(BalanceSaveDTO balanceSaveDTO);
+
+    void updateSingle(BalanceUpdateDTO updateDTO);
+
+    void del(Long id);
 }
