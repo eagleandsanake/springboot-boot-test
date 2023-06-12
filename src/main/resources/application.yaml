@@ -4,6 +4,6 @@ spring:
   application:
     name: springboot-boot-test
   datasource:
-    url: jdbc:mysql://rm-8vbch9199979x7qiizo.mysql.zhangbei.rds.aliyuncs.com:3306/test?characterEncoding=utf-8&serverTimezone=GMT%2B8
-    username: remote
-    password: 123qweASD!@#
+    url: jdbc:mysql://${mysqladdr}:3306/test?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: ${name}
+    password: ${pass}
